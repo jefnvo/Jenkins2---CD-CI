@@ -17,8 +17,9 @@ pipeline {
 @NonCPS
 def iterateCommits(){
 	
-	COMMITS = sh(script: "git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT", returnStdout: true).split('\n')
-	sh 'echo "Git previous commit ${COMMITS}"'
+	COMMITS = sh(script: "git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT", returnStdout: true)
+	
+	echo "Git previous commit ${COMMITS}"
 }
 
 @NonCPS // has to be NonCPS or the build breaks on the call to .each
