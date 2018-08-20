@@ -19,11 +19,12 @@ def iterateCommits(){
 		returnStdout: true
 		).trim()
 	// echo "eeeeeeeeeeee ooooo ${COMMITS}"
-	script {
-		if ( ${COMMITS}.find {it == ".js"} ) {
-			sh "echo entrei"
-		} 
-	}
+	sh (
+			if ( ${COMMITS}.find {it == ".js"} ) {
+				sh "echo entrei"
+			} 
+		)
+		
 }
 
 @NonCPS // has to be NonCPS or the build breaks on the call to .each
