@@ -73,7 +73,7 @@ pipeline {
 									returnStdout: true
 									)
                     sh "echo hello ${COMMITS}"
-                    COMMITS.each { com -> println "Commits ${com}"}
+                    //COMMITS.each { com -> println "Commits ${com}"}
                 }
             }
         }
