@@ -12,20 +12,19 @@ pipeline {
 }
 
 
-
-def iterateCommits(){
-		// Git committer email
-	// GIT_COMMIT_EMAIL = sh (
-	//     script: 'git --no-pager show -s --format=\'%ae\'',
-	//     returnStdout: true
-	// ).trim()
-	// echo "Git committer email: ${GIT_COMMIT_EMAIL}"
-	
+@NonCPS
+def iterateCommits(){	
 	COMMITS = sh (
 		script: "git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT", 
 		returnStdout: true
 		).trim()
 	echo "eeeeeeeeeeee ooooo ${COMMITS}"
+
+	COMMITS.each {item -> 
+		if ( ${item}.find {it == ".js"} ) {
+			sh "echo entrei"
+		}
+	}
 }
 
 @NonCPS // has to be NonCPS or the build breaks on the call to .each
