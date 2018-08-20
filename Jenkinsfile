@@ -17,7 +17,7 @@ def iterateCommits(){
 	COMMITS = sh (
 		script: "git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT", 
 		returnStdout: true
-		)
+		).trim()
 	echo "eeeeeeeeeeee ooooo ${COMMITS}"
 }
 
