@@ -14,18 +14,20 @@ pipeline {
 
 @NonCPS
 def iterateCommits(){	
-	// COMMITS = sh (
-	// 	script: "git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT", 
-	// 	returnStdout: true
-	// 	).trim()
+	COMMITS = sh (
+		script: "git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT", 
+		returnStdout: true
+		).trim()
 	// echo "eeeeeeeeeeee ooooo ${COMMITS}"
 
 	COMMITS.each {item -> 
+		steps{
 			script { 
 				if ( ${item}.find {it == ".js"} ) {
 					sh "echo entrei"
-				} 
-			}
+			} 
+		}
+		}
 	}
 }
 
