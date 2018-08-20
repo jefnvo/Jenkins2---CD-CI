@@ -1,24 +1,16 @@
 // Related to https://issues.jenkins-ci.org/browse/JENKINS-26481
-
 abcs = ['a', 'b', 'c']
 
-node('master') {
-    stage('Test 1: loop of echo statements') {
-        echo_all(abcs)
-    }
-    
-    stage('Test 2: loop of sh commands') {
-        loop_of_sh(abcs)
-    }
-    
-    stage('Test 3: loop with preceding SH') {
-        loop_with_preceding_sh(abcs)
-    }
-    
-    stage('Test 4: traditional for loop') {
-        traditional_int_for_loop(abcs)
-    }
+pipeline {
+	agent any
+	stage('Build') {
+		steps {
+			echo_all(abcs)
+
+		}
+	}
 }
+
 
 @NonCPS // has to be NonCPS or the build breaks on the call to .each
 def echo_all(list) {
