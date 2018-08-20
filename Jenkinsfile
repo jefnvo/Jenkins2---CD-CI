@@ -20,15 +20,7 @@ def iterateCommits(){
 		).trim()
 	// echo "eeeeeeeeeeee ooooo ${COMMITS}"
 
-	COMMITS.each {item -> 
-		echo "Hey ${item}"
-		script {
-			echo "hello ${item}" 
-			if ( ${item}.find {it == ".js"} ) {
-				sh "echo entrei"
-			} 
-		}
-	}
+	COMMITS.each {item -> echo "Hey ${item}"}
 }
 
 @NonCPS // has to be NonCPS or the build breaks on the call to .each
