@@ -22,8 +22,7 @@ def iterateCommits(){
 	// echo "Git committer email: ${GIT_COMMIT_EMAIL}"
 	
 	COMMITS = sh (
-		script: "git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT", 
-		returnStdout: true
+		script: "git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT"
 		).trim()
 	echo "eeeeeeeeeeee ooooo ${COMMITS}"
 }
