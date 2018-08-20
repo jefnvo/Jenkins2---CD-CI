@@ -25,7 +25,7 @@ def iterateCommits(){
 		script: "git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT", 
 		returnStdout: true
 		).trim()
-	echo "Git previous commit ${COMMITS}"
+	echo "eeeeeeeeeeee ooooo ${COMMITS}"
 }
 
 @NonCPS // has to be NonCPS or the build breaks on the call to .each
