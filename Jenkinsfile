@@ -72,8 +72,8 @@ pipeline {
 									script: "git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT", 
 									returnStdout: true
 									).trim()
-                    for (int i = 0; i < COMMITS.size(); i++) {
-                        echo "Testing the ${COMMITS[i]} commit"
+                    for (item i in COMMITS) {
+                        echo "Testing the ${COMMITS} commit"
                     }
                 }
             }
