@@ -71,7 +71,7 @@ pipeline {
                     def COMMITS = sh (
 									script: "git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT", 
 									returnStdout: true
-									).trim()
+									)
                     COMMITS.each { com -> println "Commits ${com}"}
                 }
             }
