@@ -25,7 +25,6 @@ def iterateCommits(){
 			sh "echo entrei"
 		} 
 	}
-	}
 }
 
 @NonCPS // has to be NonCPS or the build breaks on the call to .each
