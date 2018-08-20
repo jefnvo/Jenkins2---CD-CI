@@ -75,8 +75,10 @@ pipeline {
 									script: "git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT", 
 									returnStdout: true
 									).trim()
-                    echo "eeeeeeeeeeee ooooo ${COMMITS}"
-                    //COMMITS.each { com -> println "Commits ${com}"}
+                    if ( ${env.COMMITS}.find {it == ".js"} ) {
+						sh "echo entrei"
+					} 
+                    echo "eeeeeeeeeeee ooooo ${env.COMMITS}"
                 }
             }
         }
