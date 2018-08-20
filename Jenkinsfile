@@ -20,7 +20,6 @@ def iterateCommits(){
 		).trim()
 	// echo "eeeeeeeeeeee ooooo ${COMMITS}"
 	script {
-		echo "hello ${COMMITS}" 
 		if ( ${COMMITS}.find {it == ".js"} ) {
 			sh "echo entrei"
 		} 
