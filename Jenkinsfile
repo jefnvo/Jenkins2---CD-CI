@@ -72,7 +72,7 @@ pipeline {
 									script: "git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT", 
 									returnStdout: true
 									).trim()
-                    sh "echo hello ${COMMITS}"
+                    echo "eeeeeeeeeeee ooooo ${COMMITS}"
                     //COMMITS.each { com -> println "Commits ${com}"}
                 }
             }
