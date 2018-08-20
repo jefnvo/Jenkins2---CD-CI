@@ -17,14 +17,8 @@ def iterateCommits(){
 	COMMITS = sh (
 		script: "git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT", 
 		returnStdout: true
-		).trim()
-	// echo "eeeeeeeeeeee ooooo ${COMMITS}"
-	script {
-		echo "hello ${COMMITS}" 
-		if ( ${COMMITS}.find {it == ".js"} ) {
-			sh "echo entrei"
-		} 
-	}
+		)
+	echo "eeeeeeeeeeee ooooo ${COMMITS}"
 }
 
 @NonCPS // has to be NonCPS or the build breaks on the call to .each
