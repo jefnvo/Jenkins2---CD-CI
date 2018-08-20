@@ -3,10 +3,11 @@ abcs = ['a', 'b', 'c']
 
 pipeline {
 	agent any
-	stage('Build') {
-		steps {
-			echo_all(abcs)
-
+	stages {
+		stage('Build') {
+			steps {
+				echo_all(abcs)
+			}
 		}
 	}
 }
