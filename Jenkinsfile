@@ -62,13 +62,16 @@
 
 pipeline {
     agent any
+    environment {
+  		COMMITSS = ""
+	}
     stages {
         stage('Example') {
             steps {
                 echo 'Hello World'
 
                 script {
-                    def COMMITS = sh (
+                    env.COMMITS = sh (
 									script: "git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT", 
 									returnStdout: true
 									).trim()
