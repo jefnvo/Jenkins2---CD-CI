@@ -1,4 +1,3 @@
-// Related to https://issues.jenkins-ci.org/browse/JENKINS-26481
 abcs = ['a', 'b', 'c']
 
 pipeline {
@@ -14,14 +13,13 @@ pipeline {
 
 
 
-@NonCPS
 def iterateCommits(){
 		// Git committer email
-	GIT_COMMIT_EMAIL = sh (
-	    script: 'git --no-pager show -s --format=\'%ae\'',
-	    returnStdout: true
-	).trim()
-	echo "Git committer email: ${GIT_COMMIT_EMAIL}"
+	// GIT_COMMIT_EMAIL = sh (
+	//     script: 'git --no-pager show -s --format=\'%ae\'',
+	//     returnStdout: true
+	// ).trim()
+	// echo "Git committer email: ${GIT_COMMIT_EMAIL}"
 	
 	COMMITS = sh (
 		script: "git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT", 
