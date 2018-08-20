@@ -72,9 +72,7 @@ pipeline {
 									script: "git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT", 
 									returnStdout: true
 									).trim()
-                    for (item i in COMMITS) {
-                        echo "Testing the ${COMMITS} commit"
-                    }
+                    COMMITS.each { com -> println "Commits ${com}"}
                 }
             }
         }
