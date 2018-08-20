@@ -6,12 +6,18 @@ pipeline {
 	stages {
 		stage('Build') {
 			steps {
-				echo_all(abcs)
+				iterateCommits()
 			}
 		}
 	}
 }
 
+
+
+@NonCPS
+def iterateCommits(){
+	$(git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT).each(item -> echo "Hello ${item}")
+}
 
 @NonCPS // has to be NonCPS or the build breaks on the call to .each
 def echo_all(list) {
