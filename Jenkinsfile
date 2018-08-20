@@ -6,9 +6,8 @@ pipeline {
 	stages {
 		stage('Build') {
 			steps {
-				COMMITS = sh(script: "git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT").trim('\n')
 				script{
-					COMMITS.each{ item -> echo "Hello ${item}" }
+					sh(script: "git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT").trim('\n').each{ item -> echo "Hello ${item}" }
 				}
 			}
 		}
