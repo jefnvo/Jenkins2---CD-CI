@@ -1,0 +1,10 @@
+Opa boa tarde, ainda to travado no cache kkk
+
+Isso que vc disse de importar o servico do cache como servico OSGI seria essa configuração certo:
+<!-- Habilitando cache annotations do Spring especificando o CacheManager a ser utilizado -->
+        <cache:annotation-driven cache-manager="cacheService" />
+ 
+ <!-- Referência do EhCache Cache Manager exposto como serviço -->
+ <osgi:reference id="cacheService" interface="org.springframework.cache.CacheManager" />
+
+Aparentemente ta funcionando... Coloquei a annotation @Cacheable (  "listCache" ) em cima do metodo na classe de serviço e quando eu debugo ele manda o nome do cache para o bundle algarcrm-cache. Porem tem uma classe 
