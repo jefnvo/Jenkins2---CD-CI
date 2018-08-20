@@ -1,1 +1,7 @@
 a test for adding archs
+Jenkinsfile
+formatter.xml
+teste.txt
+Jenkinsfile
+formatter.xml
+teste.txt

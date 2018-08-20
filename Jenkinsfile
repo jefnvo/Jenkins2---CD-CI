@@ -6,7 +6,10 @@ pipeline {
 	stages {
 		stage('Build') {
 			steps {
-				iterateCommits()
+				COMMITS = sh(script: "git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT").trim('\n')
+				script{
+					COMMITS.each{ item -> echo "Hello ${item}" }
+				}
 			}
 		}
 	}
@@ -17,8 +20,6 @@ pipeline {
 @NonCPS
 def iterateCommits(){
 	
-	COMMITS = sh(script: "git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT")
-	COMMITS.each { item -> echo "Hello ${item}" }
 	
 }
 
