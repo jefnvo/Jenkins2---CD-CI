@@ -21,7 +21,9 @@ def iterateCommits(){
 	// echo "eeeeeeeeeeee ooooo ${COMMITS}"
 
 	COMMITS.each {item -> 
-		script { 
+		echo "Hey ${item}"
+		script {
+			echo "hello ${item}" 
 			if ( ${item}.find {it == ".js"} ) {
 				sh "echo entrei"
 			} 
