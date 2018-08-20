@@ -20,7 +20,7 @@ def iterateCommits(){
 		).trim()
 	// echo "eeeeeeeeeeee ooooo ${COMMITS}"
 
-	COMMITS.each {item -> echo "Hey ${item}"}
+	COMMITS.each {item -> sh "echo "Hey ${item}""}
 }
 
 @NonCPS // has to be NonCPS or the build breaks on the call to .each
