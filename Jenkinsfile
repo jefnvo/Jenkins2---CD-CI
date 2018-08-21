@@ -84,7 +84,7 @@ pipeline {
                     	if(variable[i].endsWith(".js") ){
                     		echo "that is a javaScript archive and should running webpack"
                     		sh 	"""
-			                   	 ${env.runWebpack} = "true"
+			                   	 env.runWebpack = "true"
 			                    	
 			                	"""
                     		echo "The value of env variable is  ${env.runWebpack}"
