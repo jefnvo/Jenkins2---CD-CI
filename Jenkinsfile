@@ -79,8 +79,8 @@ pipeline {
 						sh "echo entrei"
 					}
 					 
-                    echo "A posicao 0 eh = ${variable[0]}"
-                    echo "A posicao 1 eh = ${variable[1]}"
+                    echo "A posicao 0 eh = ${COMMITS[0]}"
+                    echo "A posicao 1 eh = ${COMMITS[1]}"
                 }
             }
         }
