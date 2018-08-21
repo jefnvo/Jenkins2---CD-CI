@@ -83,7 +83,7 @@ pipeline {
                     for(i=0; i<variable.size();i++){
                     	if(variable[i].endsWith(".js") ){
                     		echo "that is a javaScript archive and should running webpack"
-                    		env.runWebpack = "true"
+                    		${env.runWebpack} = "true"
                     	}
                     }
 
