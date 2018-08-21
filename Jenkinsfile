@@ -81,7 +81,7 @@ pipeline {
 					variable = env.COMMITS.split("\n") 
                     echo "A primeira posicao = ${variable[0]}"
                     echo "A segunda posicao = ${variable[1]}"
-                    echo "tudo"
+                    echo "tudo ${variable}"
                 }
             }
         }
