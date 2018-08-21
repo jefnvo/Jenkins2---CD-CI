@@ -78,7 +78,7 @@ pipeline {
                     if ( "aaA" == "aaA" ) {
 						sh "echo entrei"
 					} 
-                    echo "${env.COMMITS}"
+                    echo "${env.COMMITS[1]}"
                 }
             }
         }
