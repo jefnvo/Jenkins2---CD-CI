@@ -63,7 +63,7 @@
 pipeline {
     agent any
     environment {
-  		COMMITSS = ""
+  		runWebpack = "false"
 	}
     stages {
         stage('Example') {
@@ -71,22 +71,24 @@ pipeline {
                 echo 'Hello World'
 
                 script {
-                    env.COMMITS = sh (
+                    variable = sh (
 									script: "git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT", 
 									returnStdout: true
 									)
+                    variable = variable.split("\n")
                     
-					variable = env.COMMITS.split("\n") 
                     echo "A primeira posicao = ${variable[0]}"
                     echo "A segunda posicao = ${variable[1]}"
                     echo "tamanho do vetor ${variable.size()}"
                     for(i=0; i<variable.size();i++){
                     	if(variable[i].endsWith(".js") ){
                     		echo "that is a javaScript archive and should running webpack"
+                    		env.runWebpack = "true"
                     	}
                     }
 
                 }
+                echo "The value of env variable is  ${env.runWebpack}"
             }
         }
     }
