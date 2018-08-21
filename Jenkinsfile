@@ -74,15 +74,14 @@ pipeline {
                     env.COMMITS = sh (
 									script: "git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT", 
 									returnStdout: true
-									).split("\n")
+									)
                     if ( "aaA" == "aaA" ) {
 						sh "echo entrei"
 					}
-					 
-                    echo "A posicao 0 eh = ${env.COMMITS[0]}"
-                    echo "A posicao 1 eh = ${env.COMMITS[1]}"
-                    echo "todo a variavel eh = ${env.COMMITS}"
-
+					variable = env.COMMITS.split("\n") 
+                    echo "A primeira posicao = ${variable[0]}"
+                    echo "A segunda posicao = ${variable[1]}"
+                    echo "tudo"
                 }
             }
         }
