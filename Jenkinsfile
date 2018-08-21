@@ -1,76 +1,11 @@
-// abcs = ['a', 'b', 'c']
-
-// pipeline {
-// 	agent any
-// 	stages {
-// 		stage('Build') {
-// 			steps {
-// 				iterateCommits()
-// 			}
-// 		}
-// 	}
-// }
-
-
-
-// def iterateCommits(){	
-// 	COMMITS = sh (
-// 		script: "git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT", 
-// 		returnStdout: true
-// 		).trim()
-// 	// echo "eeeeeeeeeeee ooooo ${COMMITS}"
-// 	script {
-// 		if ( ${COMMITS}.find {it == ".js"} ) {
-// 			sh "echo entrei"
-// 		} 
-// 	}
-// }
-
-// @NonCPS // has to be NonCPS or the build breaks on the call to .each
-// def echo_all(list) {
-//     list.each { item ->
-//         echo "Hello ${item}"
-//     }
-// }
-// // outputs all items as expected
-
-// @NonCPS
-// def loop_of_sh(list) {
-//     list.each { item ->
-//         sh "echo Hello ${item}"
-//     }
-// }
-// // outputs only the first item
-
-// @NonCPS
-// def loop_with_preceding_sh(list) {
-//     sh "echo Going to echo a list"
-//     list.each { item ->
-//         sh "echo Hello ${item}"
-//     }
-// }
-// // outputs only the "Going to echo a list" bit
-
-// //No NonCPS required
-// def traditional_int_for_loop(list) {
-//     sh "echo Going to echo a list"
-//     for (int i = 0; i < list.size(); i++) {
-//         sh "echo Hello ${list[i]}"
-//     }
-// }
-// // echoes everything as expected
-
 pipeline {
     agent any
-
     stages {
-        stage('Example') {
+        stage('Build') {
             steps {
-                echo 'Hello World'
-                
-
                 script {
-                	runWebpack = "false"
+                	echo "Hello, we're verify if it's necessary run webpack"
+                	runWebpack = "true"
                     COMMMITS = sh (
 									script: "git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT", 
 									returnStdout: true
@@ -85,9 +20,10 @@ pipeline {
                     }
                     if(runWebpack.equals("false")){
                     	echo "skipping webpack"
-                    	sh 'mvn -T 4 install -nsu -Dmaven.test.skip=true -Dnpm.skip=true'
+                    	//sh 'mvn -f ./source -T 4 install -nsu -Dmaven.test.skip=true -Dnpm.skip=true'
                     } else {
-                    	sh 'mvn -T 4 install -nsu -Pdev'
+                    	echo "running webpack"
+                    	//sh 'mvn -f ./source -T 4 install -nsu -Pdev'
                     }
 
                 }
