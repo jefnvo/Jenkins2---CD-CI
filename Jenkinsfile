@@ -77,8 +77,9 @@ pipeline {
 									)
                     if ( "aaA" == "aaA" ) {
 						sh "echo entrei"
-					} 
-                    echo "${env.COMMITS[1]}"
+					}
+					variable = env.COMMITS.split("\n") 
+                    echo "${variable}"
                 }
             }
         }
