@@ -79,8 +79,10 @@ pipeline {
 						sh "echo entrei"
 					}
 					 
-                    echo "A posicao 0 eh = ${COMMITS[0]}"
-                    echo "A posicao 1 eh = ${COMMITS[1]}"
+                    echo "A posicao 0 eh = ${env.COMMITS[0]}"
+                    echo "A posicao 1 eh = ${env.COMMITS[1]}"
+                    echo "todo a variavel eh = ${env.COMMITS}"
+
                 }
             }
         }
