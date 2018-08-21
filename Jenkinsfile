@@ -75,13 +75,12 @@ pipeline {
 									script: "git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT", 
 									returnStdout: true
 									)
-                    if ( "aaA" == "aaA" ) {
-						sh "echo entrei"
-					}
+                    
 					variable = env.COMMITS.split("\n") 
                     echo "A primeira posicao = ${variable[0]}"
                     echo "A segunda posicao = ${variable[1]}"
-                    echo "tudo ${variable}"
+                    echo "tamanho do vetor ${variable.size()}"
+
                 }
             }
         }
