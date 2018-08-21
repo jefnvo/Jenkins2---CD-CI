@@ -62,13 +62,12 @@
 
 pipeline {
     agent any
-    environment {
-  		runWebpack = "false"
-	}
+
     stages {
         stage('Example') {
             steps {
                 echo 'Hello World'
+                runWebpack = "false"
 
                 script {
                     variable = sh (
@@ -83,15 +82,13 @@ pipeline {
                     for(i=0; i<variable.size();i++){
                     	if(variable[i].endsWith(".js") ){
                     		echo "that is a javaScript archive and should running webpack"
-                    		sh 	"""
-			                   	 env.runWebpack = "true"
-			                    	
-			                	"""
-                    		echo "The value of env variable is  ${env.runWebpack}"
-                    	}
+                    		runWebpack = "true"
+
+                       	}
                     }
 
                 }
+                echo "the value of ${runWebpack}"
                 
             }
         }
