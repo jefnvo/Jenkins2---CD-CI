@@ -71,25 +71,27 @@ pipeline {
 
                 script {
                 	runWebpack = "false"
-                    variable = sh (
+                    COMMMITS = sh (
 									script: "git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT", 
 									returnStdout: true
 									)
-                    variable = variable.split("\n")
-                    
-                    echo "A primeira posicao = ${variable[0]}"
-                    echo "A segunda posicao = ${variable[1]}"
-                    echo "tamanho do vetor ${variable.size()}"
-                    for(i=0; i<variable.size();i++){
-                    	if(variable[i].endsWith(".js") ){
+                    COMMMITS = COMMMITS.split("\n")
+                    for(i=0; i<COMMMITS.size();i++){
+                    	if(COMMMITS[i].endsWith(".js") ){
                     		echo "that is a javaScript archive and should running webpack"
                     		runWebpack = "true"
-
+                    		break;
                        	}
+                    }
+                    if(runWebpack.equals("false")){
+                    	echo "skipping webpack"
+                    	sh 'mvn -T 4 install -nsu -Dmaven.test.skip=true -Dnpm.skip=true'
+                    } else {
+                    	sh 'mvn -T 4 install -nsu -Pdev'
                     }
 
                 }
-                echo "the value of ${runWebpack}"
+               
                 
             }
         }
