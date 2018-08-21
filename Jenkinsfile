@@ -74,11 +74,11 @@ pipeline {
                     env.COMMITS = sh (
 									script: "git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT", 
 									returnStdout: true
-									).trim()
+									)
                     if ( "aaA" == "aaA" ) {
 						sh "echo entrei"
 					} 
-                    echo "eeeeeeeeeeee ooooo ${env.COMMITS}"
+                    echo "${env.COMMITS}"
                 }
             }
         }
