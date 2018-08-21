@@ -67,9 +67,10 @@ pipeline {
         stage('Example') {
             steps {
                 echo 'Hello World'
-                runWebpack = "false"
+                
 
                 script {
+                	runWebpack = "false"
                     variable = sh (
 									script: "git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT", 
 									returnStdout: true
