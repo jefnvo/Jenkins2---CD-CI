@@ -80,8 +80,8 @@ pipeline {
                     echo "A primeira posicao = ${variable[0]}"
                     echo "A segunda posicao = ${variable[1]}"
                     echo "tamanho do vetor ${variable.size()}"
-                    for(i=0; i<${variable.size()};i++){
-                    	if(${variable[i]}.endsWith(".js") ){
+                    for(i=0; i<variable.size();i++){
+                    	if(variable[i].endsWith(".js") ){
                     		echo "that is a javaScript archive and should running webpack"
                     	}
                     }
