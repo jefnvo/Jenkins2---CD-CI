@@ -15,7 +15,7 @@ pipeline {
     	}
     	stage ('Build'){
     		steps {
-    			echo 'This is a minimal pipeline'
+    			echo 'This is a minimal pipeline another word'
     		}
     	}
     }
