@@ -36,10 +36,10 @@ pipeline {
 def build(runWebpack){
 	if(runWebpack){
 		echo "skipping webpack"
-        sh 'mvn -f ./my-app/source -T 4 install -nsu -Dmaven.test.skip=true -Dnpm.skip=true'
+        sh 'mvn -f ./my-app -T 4 install -nsu -Dmaven.test.skip=true -Dnpm.skip=true'
 	}else{
 		echo "running webpack"
-        sh 'mvn -f ./my-app/source -T 4 install -nsu -Pdev'
+        sh 'mvn -f ./my-app -T 4 install -nsu -Pdev'
 	}
 
 }
