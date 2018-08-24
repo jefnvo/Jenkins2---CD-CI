@@ -1,4 +1,15 @@
 pipeline {
+	checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
+											userRemoteConfigs: [[credentialsId: 'e1dd82b6-9941-4e95-8310-75fecefe6aa5', 
+											url: 'https://github.com/jefnvo/Jenkins2---CD-CI']]])
+
+    parameters {
+  		choice choices: 	['mvn clean install -nsu', 
+  							'mvn -f ./my-app -T 4 install -nsu -Dmaven.test.skip=true -Dnpm.skip=true', 
+  							'mvn -f ./my-app -T 4 install -nsu -Pci'], 
+  							description: 'Build parameters', name: 'Build Type'
+	}
+
     agent any
     tools {
     	maven 'Maven 3.5.4'
@@ -26,7 +37,6 @@ def build(runWebpack){
 		echo "running webpack"
         sh 'mvn -f ./my-app -T 4 install -nsu -Pdev'
 	}
-
 }
 def verify(){
 	runWebpack = "false"
