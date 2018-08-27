@@ -15,7 +15,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                	echo "Hello the default parameter is {params.BuildType}"
+                	echo "Hello the default parameter is ${params.BuildType}"
                 	echo "Hello, we're verify if it's necessary run webpack"
                 	runWebpack = verify()                    
                    	build(runWebpack)
