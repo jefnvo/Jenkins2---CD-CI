@@ -1,7 +1,5 @@
 pipeline {
-	checkout scm
-
-    parameters {
+	parameters {
 		choice choices: ['mvn clean install -nsu', 
 						 'mvn -f ./my-app -T 4 install -nsu -Dmaven.test.skip=true -Dnpm.skip=true', 
 						 'mvn -f ./my-app -T 4 install -nsu -Pci'], 
