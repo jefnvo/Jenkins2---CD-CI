@@ -1,7 +1,6 @@
 pipeline {
 	parameters {
-		choice choices: ['mvn clean install -nsu', 
-						 'mvn -f ./my-app -T 4 install -nsu -Dmaven.test.skip=true -Dnpm.skip=true', 
+		choice choices: ['mvn -f ./my-app -T 4 install -nsu -Dmaven.test.skip=true -Dnpm.skip=true', 
 						 'mvn -f ./my-app -T 4 install -nsu -Pci'], 
 						 description: 'Build parameters', name: 'BuildType'
 	}
@@ -12,10 +11,10 @@ pipeline {
     	jdk 'java8'
     }
     stages {
-        stage('Build') {
+        stage('defaultBuild') {
             steps {
                 script {
-                	echo "Hello the default parameter is ${params.BuildType}"
+                	echo "Hello the default parameter is ${params.BuildType[1]}"
                 	echo "Hello, we're verify if it's necessary run webpack"
                 	runWebpack = verify()                    
                    	build(runWebpack)
@@ -28,11 +27,11 @@ pipeline {
 }
 def build(runWebpack){
 	if(runWebpack){
-		echo "skipping webpack"
-        sh 'mvn -f ./my-app -T 4 install -nsu -Dmaven.test.skip=true -Dnpm.skip=true'
-	}else{
 		echo "running webpack"
         sh 'mvn -f ./my-app -T 4 install -nsu -Pdev'
+	}else{
+		echo "skipping webpack"
+        sh 'mvn -f ./my-app -T 4 install -nsu -Dmaven.test.skip=true -Dnpm.skip=true'
 	}
 }
 def verify(){
