@@ -3,7 +3,7 @@ pipeline {
 		choice choices: ['mvn clean install -nsu', 
 						 'mvn -f ./my-app -T 4 install -nsu -Dmaven.test.skip=true -Dnpm.skip=true', 
 						 'mvn -f ./my-app -T 4 install -nsu -Pci'], 
-						 description: 'Build parameters', name: 'Build Type'
+						 description: 'Build parameters', name: 'BuildType'
 	}
 
     agent any
@@ -15,6 +15,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
+                	echo "Hello the default parameter is {params.BuildType}"
                 	echo "Hello, we're verify if it's necessary run webpack"
                 	runWebpack = verify()                    
                    	build(runWebpack)
