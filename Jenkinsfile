@@ -14,6 +14,7 @@ pipeline {
             steps {
                 script {
                 	echo "Hello, we're verify if it's necessary run webpack"
+			sh 'curl --version'
                 	runWebpack = "false"
 					COMMMITS = sh (
 									script: "git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT", 
